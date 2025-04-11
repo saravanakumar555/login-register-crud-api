@@ -9,11 +9,11 @@ export default class getmyfirstapicallModel{
     }
 
 
-    async addreactiveformdata(body){
+   async addreactiveformdata(body){
         console.log(body)
         if (body.type=='add') {
-            return await query('INSERT INTO reactive_form_data (First_name, Last_Name, email, phone, address, Image) VALUES (?,?,?,?,?,?)',
-        [body.firstName,body.lastName,body.email,body.phone,body.address,body.image])
+            return await query('INSERT INTO reactive_form_data (First_name, Last_Name, email, phone, address, Gender) VALUES (?,?,?,?,?,?)',
+        [body.firstName,body.lastName,body.email,body.phone,body.address,body.gender])
         } 
         }
     async checkusername(firstName){
@@ -51,8 +51,9 @@ export default class getmyfirstapicallModel{
         
 
    async updatereactiveformdata(body){
-    return await query('UPDATE reactive_form_data SET First_name = ?, Last_Name = ?,email=?, phone = ?, address = ? WHERE id=?',
-    [body.firstName,body.lastName,body.email,body.phone,body.address,body.id])
+    console.log('modelbody:',body)
+    return await query('UPDATE reactive_form_data SET First_name = ?, Last_Name = ?,email=?, phone = ?, address = ?, Gender = ? WHERE id=?',
+    [body.firstName,body.lastName,body.email,body.phone,body.address,body.gender,body.id])
 }
 
 }
